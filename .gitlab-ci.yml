@@ -1,0 +1,59 @@
+variables:
+  image_py3_10_8: python:3.10.8-slim-buster
+
+.job_template: &job_configuration
+  image: ${image_py3_10_8}
+  before_script:
+    - python -m venv venv
+    - . venv/bin/activate
+    - python -m pip install pip --upgrade
+  
+
+.rules_template: &rules_template
+  rules:
+    - if: '$CI_MERGE_REQUEST_APPROVED == "true" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+      when: always
+
+stages:
+  - test
+  - build_push_wheel
+
+test:
+  <<: *job_configuration
+  script:
+    - pip install pytest
+    - echo "Hello form test job in stage test"
+    - echo "Run your tests here ..."
+  tags:
+    - internal
+  stage: test
+  allow_failure: false
+
+pre_commit_hooks:
+  <<: *job_configuration
+  script:
+    - pip install pre-commit
+    - echo "Hello form pre-commit-hook job in stage test"
+    - echo "Run your pre-commit-hooks here ..."
+  tags:
+    - internal
+  stage: test
+  allow_failure: false
+  
+
+wheel:
+  <<: *job_configuration
+  script:
+    - pip install twine wheel
+    - echo "Hello form build-push-wheel job in stage test"
+    - rm -rf dist/ build/ \*.egg-info/
+    - export TWINE_USERNAME=$ARTIFACTORY_USER
+    - export TWINE_PASSWORD=$ARTIFACTORY_TOKEN
+    - bash cicd-helper-scripts/make-wheel.sh
+    - bash cicd-helper-scripts/upload-wheel.sh
+  <<: *rules_template
+  tags:
+    - internal
+  stage: build_push_wheel
+  allow_failure: false
+

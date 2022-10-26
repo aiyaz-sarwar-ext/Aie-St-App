@@ -1,0 +1,4 @@
+ez_bucket: "s3://ez_bucket/foobar.parquet"
+iz_qa_bucket: "s3://iz_qa_bucket/foobar.parquet"
+iz_prod_bucket: "s3://iz_prod_bucket/foobar.parquet"
+nonsense_bucket: "s3://nonsense_bucket/foobar.parquet"
