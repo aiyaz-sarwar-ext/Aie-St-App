@@ -15,11 +15,7 @@ This project also demonstrates a basic ci routine. Including testing (pytest and
 
 ## Entrypoints
 
-`aie-st-app-cli`
-
-Streamlit application can also be run as a commandline programm. This is just further demonstration of how to package a wheel with more features included. Will expose streamlit app at port 8093. Can be changed by giving a port number in `aie_st_app/cli.py`.
-
-`app = StApp(server_port: int)`
+Might be implemented in the future, however none of the current streamlit apps uses this feature fo their wheel.
 
 
 ## TODO
