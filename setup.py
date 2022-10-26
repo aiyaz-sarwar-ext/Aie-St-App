@@ -11,6 +11,6 @@ setup(
     author_email="aienablementticket@bayer.com",
     install_requires=["streamlit", "PyYAML"],
     packages=find_packages()
-    package_data={"aie_st_app": ["bucket.yaml"]},
+    package_data={"aie-st-app": ["bucket.yaml"]},
 )
 
