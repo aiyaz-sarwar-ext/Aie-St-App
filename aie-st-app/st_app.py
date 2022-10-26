@@ -27,6 +27,10 @@ class StApp:
                 st.title("My config file: ")
                 st.title(bucket_config)
 
+                st.title("Contact: aienablementticket@bayer.com")
+                # Set when app is deployed to k8s cluster
+                st.title(f"Version: {os.getenv('WHEEL_VERSION')}")
+
             except yaml.YAMLError as exec:
                 print(exec)
     
