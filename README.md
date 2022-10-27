@@ -5,8 +5,9 @@ Kind of hello world streamlit app. Can be used as a template for projects that w
 
 ## Installation
 
-`pip install --index-url "https://sai-sai-transient:<secret-token>@artifactory.bayer.com/artifactory/api/pypi/sai-pypi-prod-packagestore/simple" aie-st-app`
+`pip install --extra-index-url "https://sai-sai-transient:<secret-token>@artifactory.bayer.com/artifactory/api/pypi/sai-pypi-prod-packagestore/simple" aie-st-app`
 
+`--extra-index-url` flag is key here. Because only the aie-st-app wheel can be found there, but dependencies need to be fetched from another source. That is why we do not use `--index-url` flag, to keep default PyPI index as wheel source.
 
 ## CI
 
