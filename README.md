@@ -4,8 +4,19 @@ Kind of hello world streamlit app. Can be used as a template for projects that w
 
 ## Notes for streamlit developers
 
+- Streamlit App source code should be stored in a folder (python package) named after the name of the app. All lowercase and only dashes are allowed. Example: `my-awful-app`
 
+- Inside your python package you need to create an empty `__init__.py` file. Also in all sub directories you need to create `__init__.py` files.
 
+```python3
+my-awful-app
+    subdir1
+        __init__.py
+    subdir2
+        __init__.py
+    main.py
+    __init__.py
+```
 
 ## Installation
 
