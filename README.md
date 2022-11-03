@@ -1,6 +1,10 @@
 # aie-demo-st
 
-Kind of hello world streamlit app. Can be used as a template for projects that want to pack the whole streamlit application into a wheel. This setup also allows to include config files (.yml, etc) into your wheel. Be aware that the meaning of __package__ in python terms is not very accurate to describe a wheel.
+Kind of hello world streamlit app. Can be used as a template for projects that want to pack the whole streamlit application into a wheel. This setup also allows to include config files (.yml, etc) into your wheel. Be aware that the meaning of __package__ in python terms means a folder that contains an `__init__.py`. However, here we will use it also to describe a wheel file that can be installed from a PyPI repository, more fitting name would probably be distribution, but we are used to say package.
+
+## Notes for streamlit developers
+
+
 
 
 ## Installation
