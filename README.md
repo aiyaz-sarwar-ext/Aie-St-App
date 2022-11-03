@@ -50,7 +50,8 @@ my-awful-app
   3) Run 'pip freeze > requirements.txt' to generate your `requirements.txt` file.
   4) Please pin the python versions which must be used to run your application. Please list them in the `README.md`.
   5) `requirements.txt` file has to be stored outside of the python package at the top level of your repository.
-  ```python3
+
+```python3
 my-awful-app
 requirements.txt
 README.md
@@ -66,7 +67,7 @@ README.md
 - To learn more about python packaging with setuptools please use this resource https://setuptools.pypa.io/en/latest/index.html 
 - Instead of using `setup.py` it is perfectly fine to either use `setup.cfg` or the most recent `pyproject.toml`.
 - For pinning python version in `setup.py`:
-````python3
+```python3
 setup(
  python_requires=">=3.7, <3.8", # Package can only be used in Python3.7
 )
