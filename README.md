@@ -4,7 +4,14 @@ Kind of hello world streamlit app. Can be used as a template for projects that w
 
 ## Notes for streamlit developers
 
-- Streamlit App source code should be stored in a folder (python package) named after the name of the app. All lowercase and only dashes are allowed. Example: `my-awful-app`
+- Streamlit App source code must be stored in a folder (python package) named after the name of the app. All lowercase and only dashes are allowed. Example: `my-awful-app`
+
+- The top level of your python package must contain a `main.py` file, which when given as a parameter to streamlit cli `streamlit run main.py` will start your streamlit app.
+
+```python3
+my-awful-app
+    main.py
+```
 
 - Inside your python package you need to create an empty `__init__.py` file. Also in all sub directories you need to create `__init__.py` files.
 
@@ -17,6 +24,42 @@ my-awful-app
     main.py
     __init__.py
 ```
+
+- If you parse config files or want to display images these files also have to be stored inside your python package. If you do not stroe them inside the python package these files won't be included inside the wheel and your application will probably not behave or look as you expect.
+
+```python3
+my-awful-app
+    image_dir
+        awful001.png
+        awful002.png
+        beautiful001.png
+    config_dir
+        config.json
+    subdir1
+        __init__.py
+    subdir2
+        __init__.py
+    main.py
+    __init__.py
+    config.yaml
+```
+
+- If you have dependencies we recommend to use pip dependency resolver.
+  1) Create a virtual environment and upgrade pip.
+  2) Create a requirements.in file containing all your dependencies _without_ version. Pip will figure it out.
+  3) Run 'pip freeze > requirements.txt' to generate your `requirements.txt` file.
+  4) Please pin the python versions which must be used to run your application.
+  5) `requirements.txt` file has to be stored outside of the python package at the top level of your repository.
+  ```python3
+my-awful-app
+requirements.txt
+```
+
+- For versioning you can choose your own scheme, however we recommend the format `YYYY.mm.dd`
+
+- For further questions regarding structuring your streamlit project repository please rich out to Ai Enablement via aienablementticket@bayer.com.
+
+
 
 ## Installation
 
@@ -37,8 +80,7 @@ Might be implemented in the future, however none of the current streamlit apps u
 ## TODO
 
 1) Explore https://setuptools.pypa.io/en/latest/index.html to learn more about packaging.
-2) Instead of `setup.py` use `setup.cfg`
-3) For entrypoint make the port dynamic, currently hard coded to 8093.
+2) Instead of `setup.py` use `setup.cfg` or the most recent `toml`.
 
 ## Read Further
 
