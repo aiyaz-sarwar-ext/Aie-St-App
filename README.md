@@ -48,11 +48,12 @@ my-awful-app
   1) Create a virtual environment and upgrade pip.
   2) Create a requirements.in file containing all your dependencies _without_ version. Pip will figure it out.
   3) Run 'pip freeze > requirements.txt' to generate your `requirements.txt` file.
-  4) Please pin the python versions which must be used to run your application.
+  4) Please pin the python versions which must be used to run your application. Please list them in the `README.md`.
   5) `requirements.txt` file has to be stored outside of the python package at the top level of your repository.
   ```python3
 my-awful-app
 requirements.txt
+README.md
 ```
 
 - For versioning you can choose your own scheme, however we recommend the format `YYYY.mm.dd`
