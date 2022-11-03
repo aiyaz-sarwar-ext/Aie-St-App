@@ -60,6 +60,21 @@ README.md
 
 - For further questions regarding structuring your streamlit project repository please rich out to Ai Enablement via aienablementticket@bayer.com.
 
+## Notes for using `setup.py`
+
+- In general as a streamlit app developer you can configure your own setup.py or reach out to AI Enablement to get help.
+- To learn more about python packaging with setuptools please use this resource https://setuptools.pypa.io/en/latest/index.html 
+- Instead of using `setup.py` it is perfectly fine to either use `setup.cfg` or the most recent `pyproject.toml`.
+- For pinning python version in `setup.py`:
+````python3
+setup(
+ python_requires=">=3.7, <3.8", # Package can only be used in Python3.7
+)
+
+setup(
+ python_requires=">=3.7", # Package can only be used in Python3.7 or more recent versions (3.8, 3.9 , ...)
+)
+```
 
 
 ## Installation
@@ -78,10 +93,6 @@ This project also demonstrates a basic ci routine. Including testing (pytest and
 Might be implemented in the future, however none of the current streamlit apps uses this feature fo their wheel.
 
 
-## TODO
-
-1) Explore https://setuptools.pypa.io/en/latest/index.html to learn more about packaging.
-2) Instead of `setup.py` use `setup.cfg` or the most recent `toml`.
 
 ## Read Further
 
