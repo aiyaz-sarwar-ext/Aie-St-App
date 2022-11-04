@@ -43,6 +43,12 @@ my-awful-app
     __init__.py
     config.yaml
 ```
+- If your code needs to access files, the complete path to the files is required.
+
+```python3
+here = pathlib.Path(__file__).parent.absolute()
+logo = str(here) + "/" + "bayer_logo.png"
+```
 
 - If you have dependencies we recommend to use pip dependency resolver.
   1) Create a virtual environment and upgrade pip.
