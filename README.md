@@ -95,6 +95,8 @@ setup(
 
 `--extra-index-url` flag is key here. Because only the aie-st-app wheel can be found there, but dependencies need to be fetched from another source. That is why we do not use `--index-url` flag, to keep default PyPI index as wheel source.
 
+If there are multiple versions of your package available, please specify the version `pip install --extra-index-url ... my-awesome-package==YYYY.mm.dd`.
+
 ## CI
 
 This project also demonstrates a basic ci routine. Including testing (pytest and pre-commit-hooks, not implemeted but definetly go for it) and building and pushing the wheel to bayer artifactory. To access `sai-pypi-prod-packagestore` (hosted on https://artifactory.bayer.com/ui/login/) please contact aienablementticket@bayer.com.
