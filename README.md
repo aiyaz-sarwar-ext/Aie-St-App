@@ -43,10 +43,15 @@ my-awful-app
     __init__.py
     config.yaml
 ```
-- If your code needs to access files, the complete path to the files is required.
+- If your code needs to access files, the complete path to the files is required to ensure the code is properly executed.
 
 ```python3
+import pathlib
+
+# getting the path of the current directory and storing it in the variable "here"
 here = pathlib.Path(__file__).parent.absolute()
+
+#converting the variable "here" to a string and adding the name of the file that needs to be accessed
 logo = str(here) + "/" + "bayer_logo.png"
 ```
 
