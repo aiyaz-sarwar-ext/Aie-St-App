@@ -40,4 +40,4 @@ class StApp:
 
 if __name__ == "__main__":
     app = StApp()
-    app.main()
+    raise SystemExit(app.main())
