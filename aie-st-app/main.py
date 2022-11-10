@@ -33,6 +33,7 @@ class StApp:
 
             except yaml.YAMLError as exec:
                 print(exec)
+                raise
     
     def main_cli(self) -> int:
         """This function can be used by setup.py to create a shell command."""
@@ -40,4 +41,4 @@ class StApp:
 
 if __name__ == "__main__":
     app = StApp()
-    app.main()
+    raise SystemExit(app.main())
