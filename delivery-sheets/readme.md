@@ -1,49 +1,74 @@
-delivery sheet
+Delivery Sheet
 ==============
 
-here are the documents to generate a delivery sheet. You will need to install sphinx
+It is recommended to create a virtual environment and activate it:
+
+    python -m venv .venv
+    . .venv/bin/activate
+
+The next step is the installation of sphinx
 
     pip install sphinx
 
-and texlive to generate the pdf
+and texlive to generate the pdf.
 
     sudo apt-get install texlive-full
 
-to generate the pdf file :
+Afterwards you can generate the pdf file by executing the bash script:
 
     bash make.sh
 
-files will be generated in the build directory. Upload it and give it to recipients
+All files will be generated in the build directory. You can copy the .pdf file to the sheets directory. This way delivery sheets for all releases are stored and versioned in a separate directory.
 
-integration team
+Deployment Process
 ================
-The integration team is the people who take your delivery, deploy it in QA, run UAT tests, and then deploy it to prod.
-They pull delivery from you, you don't push to them. This delivery sheet should contain all the information they need to
-deploy your product
+The AI Enablement team is responsible for the deployment of the streamlit application. After creating a ticket and attaching the delivery sheet, the app will be deployed on IZ QA. After the developer confirmed that the app works as expected, the process will be finished by deploying the app on IZ PROD. This delivery sheet contains all required information and an overview about the state of the application. 
 
-what to do
+Structure of the Delivery Sheet
 ==========
-- release.rst
-put here description of things specific to this release
-- installation.rst
-everything the integration team should do to install your product
-- dependencies.rst
-the artefacts you depend on. They could be different in dev, QA and Prod.
-- configuration.rst
-how to configure the runtime of the product. Paths, config files, env variables, docker images, ....
-- uat.rst
-user acceptance test. What the user will do to consider your delivery is valid
-- testing.rst
-what you did to test your product
-- changelog.rst
-the change log of the deliveries ( not the internal git log of the product )
+devops.rst (Notes for DevOps Team)
+----------------------------------
+This part contains required information for the deployment process and allows the AI Enablement team to quickly deploy the apps.
 
-other files
+description.rst (Application Description)
+-----------------------------------------
+This section describes the business case for the application and elaborates the provided value to the business user.
+Developers are encouraged to adjust this section properly. Every streamlit app is unique and therefore may require more contextual information. Creators can add subsections and show the impact and importance of the designed application. 
+
+release.rst (Release)
+---------------------
+Specific information about the current release can be added here.
+
+installation.rst (Installation Guide)
+-------------------------------------
+This guide should describe how the app should be installed locally and which requirements are necessary to run it succesfully.
+
+dependencies.rst (Dependencies)
+-------------------------------
+The artifacts the proper execution of the app relies on. They could be different in dev, QA and Prod.
+
+configuration.rst (Configuration)
+----------------------------------
+Guideline to configure the runtime of the product. Paths, config files, env variables, docker images, ....
+
+uat.rst (User Acceptance Tests)
+--------------------------------
+Description of UATs if available.
+
+testing.rst (Testing)
+---------------------
+Documentation of all steps and measures taken to t4est the product.
+
+changelog.rst (Change Log)
+--------------------------
+The change log of all releases ( not the internal git log of the product ).
+
+Other Files
 ===========
 There is a kedro.csv, as an example. It comes from the nightly run of airflow.
 
 
-release number
+Release Number
 ==============
 
 this could change. As for some other python packages, (regex,...) the choice is :
@@ -52,11 +77,3 @@ this could change. As for some other python packages, (regex,...) the choice is 
 
 this is easy to trace, self incrementing, ...
 
-
-
-@todo : automation
-==================
-
-- this should be triggered by gitlab cicd.
-- when pushed to master
-- have a confluence token to upload the pdf file automatically
