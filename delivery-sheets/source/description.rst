@@ -8,5 +8,3 @@ Application Description
 - Gitlab Repo URL:
 
 - Python version:
-
-- Docker image:
