@@ -1,1 +1,2 @@
-User acceptance test
+User Acceptance Tests
+=====================
