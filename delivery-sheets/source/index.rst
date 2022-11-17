@@ -10,6 +10,7 @@ Welcome to cph_pkg delivery's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   description.rst
    release.rst
    installation.rst
    dependencies.rst
