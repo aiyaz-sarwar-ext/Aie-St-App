@@ -14,6 +14,8 @@ setup(
     author="AI Enablement",
     author_email="aienablementticket@bayer.com",
     install_requires=["streamlit", "PyYAML"],
+    #install_requires=[PyP for PyP in req_txt.split("\n")], # Python Package/Distribution
+    #python_requires=">=3.7, <3.8",
     packages=find_packages(),
     package_data={"aie-st-app": ["bucket.yaml"]},
 )
