@@ -1,10 +1,14 @@
+import os
 from datetime import datetime
 from setuptools import find_packages
 from setuptools import setup  
 
+
+
+
 setup(
     name="aie-st-app",
-    version=datetime.now().strftime("%Y.%m.%d"),
+    version=os.getenv("APP_VERSION"),
     description="this package contains a simple streamlit app",
     long_description="maintained by ai enablement team",
     author="AI Enablement",
