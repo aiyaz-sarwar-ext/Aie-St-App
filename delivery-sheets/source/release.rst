@@ -3,7 +3,7 @@ Release
 
 
 
-release number
+Release Number
 --------------
 
 The release number is :
@@ -17,10 +17,10 @@ from git_sha1 :
 
 .. literalinclude:: git_sha1
 
-special remarks to integration teams
+Special Remarks to Integration Teams
 ------------------------------------
 
 this is the first official release
 
-know issues
+Known Issues
 -----------
