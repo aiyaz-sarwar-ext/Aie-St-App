@@ -6,13 +6,6 @@ import sys
 import yaml
 from streamlit.web.server.websocket_headers import _get_websocket_headers
 
-headers = _get_websocket_headers()
-
-if "X-Ms-Client-Principal-Name" in headers:
-    user_email = headers["X-Ms-Client-Principal-Name"]
-
-st.write(headers) # have a look at what else is in the dict
-
 
 class StApp:
 
@@ -50,10 +43,10 @@ class StApp:
         headers = _get_websocket_headers()
         if "X-Ms-Client-Principal-Name" in headers:
             user_email = headers["X-Ms-Client-Principal-Name"]
-            print("headers:")
-            print(headers)
-            print("user_email:")
-            print(user_email)
+            st.write("headers:")
+            st.write(headers)
+            st.write("user_email:")
+            st.write(user_email)
 
         return 0
     
