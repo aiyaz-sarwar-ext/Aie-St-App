@@ -4,6 +4,14 @@ import os
 import streamlit as st
 import sys
 import yaml
+from streamlit.web.server.websocket_headers import _get_websocket_headers
+
+headers = _get_websocket_headers()
+
+if "X-Ms-Client-Principal-Name" in headers:
+    user_email = headers["X-Ms-Client-Principal-Name"]
+
+st.write(headers) # have a look at what else is in the dict
 
 
 class StApp:
@@ -14,8 +22,10 @@ class StApp:
         self.path = "".join([str(self.here), "/", self.name])
         self.port = server_port
 
-    def main(self) -> None:
-        """Simple streamlit app that parse an input yaml and displays the content."""
+    def main(self) -> int:
+        """Simple streamlit app that parse an input yaml and displays the content.
+           And also displays current user.
+        """
         
         st.title('Hello World!')
         st.title("Current date and time: ")
@@ -35,6 +45,17 @@ class StApp:
             except yaml.YAMLError as exec:
                 print(exec)
                 raise
+        
+        st.title("======================================")
+        headers = _get_websocket_headers()
+        if "X-Ms-Client-Principal-Name" in headers:
+            user_email = headers["X-Ms-Client-Principal-Name"]
+        print("headers:")
+        print(headers)
+        print("user_email:")
+        print(user_email)
+
+        return 0
     
     def main_cli(self) -> int:
         """This function can be used by setup.py to create a shell command."""
