@@ -41,10 +41,10 @@ class StApp:
         
         st.title("======================================")
         headers = _get_websocket_headers()
+        st.write("headers:")
+        st.write(headers)
         if "X-Ms-Client-Principal-Name" in headers:
             user_email = headers["X-Ms-Client-Principal-Name"]
-            st.write("headers:")
-            st.write(headers)
             st.write("user_email:")
             st.write(user_email)
 
