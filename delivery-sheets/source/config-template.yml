@@ -1,0 +1,11 @@
+# config file template
+
+- input:
+  - bucket : < the S3 bucket where input data shall be read >
+  - path : < path of the data >
+- output:
+  - bucket : < the S3 bucket where output data will be written >
+    path: < path of the data >
+- foo : < foo >
+- bar : < bar >
+- blah : < blah blah >
