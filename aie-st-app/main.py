@@ -50,10 +50,10 @@ class StApp:
         headers = _get_websocket_headers()
         if "X-Ms-Client-Principal-Name" in headers:
             user_email = headers["X-Ms-Client-Principal-Name"]
-        print("headers:")
-        print(headers)
-        print("user_email:")
-        print(user_email)
+            print("headers:")
+            print(headers)
+            print("user_email:")
+            print(user_email)
 
         return 0
     
