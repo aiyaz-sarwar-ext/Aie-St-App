@@ -8,6 +8,7 @@ Kind of hello world streamlit app. Can be used as a template for projects that w
 
 - The top level of your python package must contain a `main.py` file, which when given as a parameter to streamlit cli `streamlit run main.py` will start your streamlit app.
 
+
 ```python3
 my-awful-app
     main.py
