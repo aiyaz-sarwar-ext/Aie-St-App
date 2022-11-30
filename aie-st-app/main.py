@@ -17,6 +17,7 @@ class StApp:
         self.port = server_port
         self.headers = _get_websocket_headers()
         self.aad_user_jwt =  self.headers.get("X-Amzn-Oidc-Data")
+        self.support = "aienablementticket@bayer.com"
         
     def decode_jwt(self, jwt_in: str) -> dict[str, str]:
         """
@@ -35,11 +36,11 @@ class StApp:
         user_email = user_decoded.get("email")
         st.markdown(f"# Hello {user_email}")
         st.markdown("# Welcome to AI Enablement Streamlit App")
-        st.markdown("This app is maintained by the AI Enablement team. Ai Enablement uses the app for testing the streamlit cicd pipeline and developing and documenting of new features.")
+        st.markdown(f"This app is maintained by the AI Enablement team. Ai Enablement uses the app for testing the streamlit cicd pipeline and developing and documenting of new features. [Here](https://gitlab.bayer.com/ai-enablement/aie-st-app/-/tree/development) you can access the source code of the app. If you do not have access, please contact us {self.support}")
         st.markdown("## How To Identify User for Personalization")
         
-        st.markdown("Install required python packages. Be aware that this solution only works for streamlit>=1.14.0. We recommend to create a virtual environment.")
-        st.code("pip install pyjwt[crypto] streamlit>=1.14.0", "bash")
+        st.markdown("Install required python packages. Be aware that this solution only works for streamlit==1.14.0 and above. We recommend to create a virtual environment.")
+        st.code("pip install pyjwt[crypto] streamlit", "bash")
 
         st.markdown("Next step is to access the web socket headers and extract jwt that carry user data.")
         st.code("""import jwt \n
@@ -82,10 +83,13 @@ st.write(f"Welcome {user_email}!")""", "python")
                 raise
         st.markdown("## Provide meta data to endusers")
         st.write("It is best practice to provide a contact email.")
-        st.markdown("#### Contact: aienablementticket@bayer.com")
+        st.markdown(f"#### Contact: {self.support}")
          # Set when app is deployed to k8s cluster
         st.markdown("Also, it is recommended to display the current version of your app. In IZ-QA and IZ-PROD, the deployed version is set as an environment variable `WHEEL_VERSION`")
-        st.code("""os.getenv('WHEEL_VERSION', "NOT_SET_IN_EZ_BY_DEFAULT")""", "python")
+        st.code("""import os\n
+import streamlit as st\n        
+version = os.getenv('WHEEL_VERSION', "NOT_SET_IN_EZ_BY_DEFAULT")\n
+st.markdown(f"#### Version: {version}")""", "python")
         st.markdown(f"#### Version: {os.getenv('WHEEL_VERSION', 'NOT_SET_IN_EZ_BY_DEFAULT')}")
 
         return 0
