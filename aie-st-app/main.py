@@ -31,28 +31,62 @@ class StApp:
         Simple streamlit app that parse an input yaml and displays the content.
         And also displays current user.
         """
-        user = self.decode_jwt(jwt_in=self.aad_user_jwt).get("email") 
-        st.title(f"Welcome {user}!")
-        st.title('Hello World!')
-        st.title("Current date and time: ")
+        user_decoded = self.decode_jwt(jwt_in=self.aad_user_jwt)
+        user_email = user_decoded.get("email")
+        st.markdown(f"# Hello {user_email}")
+        st.markdown("# Welcome to AI Enablement Streamlit App")
+        st.markdown("This app is maintained by the AI Enablement team. Ai Enablement uses the app for testing the streamlit cicd pipeline and developing and documenting of new features.")
+        st.markdown("## How To Identify User for Personalization")
+        
+        st.markdown("Install required python packages. Be aware that this solution only works for streamlit>=1.14.0. We recommend to create a virtual environment.")
+        st.code("pip install pyjwt[crypto] streamlit>=1.14.0", "bash")
+
+        st.markdown("Next step is to access the web socket headers and extract jwt that carry user data.")
+        st.code("""import jwt \n
+import streamlit as st \n
+from streamlit.web.server.websocket_headers import _get_websocket_headers""", "python")
+        st.markdown("Access web socket headers and display them.")
+        st.code("""headers = _get_websocket_headers() \n
+# Display headers object in streamlit app \n
+st.write("Web socket header data:") \n
+st.write(headers)""", "python")
+        st.write("Web socket header data:")
+        st.write(self.headers)
+        
+        st.markdown("Decode jwt to access user data.")
+        st.code("""jwt_user_data = headers.get("X-Amzn-Oidc-Data")\n
+user_decoded = jwt.decode(jwt_user_data, options={"verify_signature": False})\n
+st.write("Decoded user data from 'X-Amzn-Oidc-Data'.")\n
+st.write(user_decoded)""", "python")
+        st.write("Decoded user data from 'X-Amzn-Oidc-Data'.")
+        st.write(user_decoded)
+
+        st.markdown("Select user data needed for your application.")
+        st.code("""user_email = user_decoded.get("email")\n
+st.write(f"Welcome {user_email}!")""", "python")
+        user_email = user_decoded.get("email")
+        st.write(f"Welcome {user_email}!")
+        st.write("The current time is:")
         now = datetime.datetime.now()
-        st.title(str(now))
+        st.write(str(now))
 
         with open(self.path) as file:
             try:
                 bucket_config = yaml.safe_load(file)
-                st.title("My config file: ")
-                st.title(bucket_config)
-
-                st.title("Contact: aienablementticket@bayer.com")
-                # Set when app is deployed to k8s cluster
-                st.title(f"Version: {os.getenv('WHEEL_VERSION')}")
+                st.markdown("## Display content of a yaml file, that is part of the wheel")
+                st.write("My config file: ")
+                st.write(bucket_config)
 
             except yaml.YAMLError as exec:
                 print(exec)
                 raise
-        st.write("Web socket header data:")
-        st.write(self.headers)
+        st.markdown("## Provide meta data to endusers")
+        st.write("It is best practice to provide a contact email.")
+        st.markdown("#### Contact: aienablementticket@bayer.com")
+         # Set when app is deployed to k8s cluster
+        st.markdown("Also, it is recommended to display the current version of your app. In IZ-QA and IZ-PROD, the deployed version is set as an environment variable `WHEEL_VERSION`")
+        st.code("""os.getenv('WHEEL_VERSION', "NOT_SET_IN_EZ_BY_DEFAULT")""", "python")
+        st.markdown(f"#### Version: {os.getenv('WHEEL_VERSION', 'NOT_SET_IN_EZ_BY_DEFAULT')}")
 
         return 0
     
