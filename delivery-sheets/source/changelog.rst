@@ -1,5 +1,7 @@
 Change Log
 ==========
+- 2022.11.30.2
+    added a link to the source code gitlab repository
 - 2022.11.30.1
     added documentation in form of minimal working examples
 
