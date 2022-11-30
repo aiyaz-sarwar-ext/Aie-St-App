@@ -1,5 +1,7 @@
 Change Log
 ==========
+- 2022.11.30.1
+    added documentation in form of minimal working examples
 
 - 2022-11-30
     implement personalization, by getting user data from web socket header
