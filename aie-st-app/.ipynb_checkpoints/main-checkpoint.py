@@ -129,8 +129,9 @@ metric_list = list(['read','write a text to a file','copy the file'])\n
 s3_bucket_env = st.selectbox(label = "Choose a bucket", options = s3_bucket_env)\n
 metric = st.selectbox(label = "Choose a metric", options = metric_list)\n
 st.write('You selected:', s3_bucket_env)\n
-st.write('You selected:', metric)\n
-if metric == 'write a text to a file':\n
+st.write('You selected:', metric)\n""", "python")
+
+        st.code("""if metric == 'write a text to a file':\n
     text_to_put = st.text_input('Enter text : ')\n
     key_to_write_to = st.text_input('Enter Key to write to : ')\n
     client.put_object(Bucket= s3_bucket_env,Body= text_to_put,Key= key_to_write_to)\n\n
