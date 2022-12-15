@@ -94,56 +94,7 @@ import streamlit as st\n
 version = os.getenv('WHEEL_VERSION', "NOT_SET_IN_EZ_BY_DEFAULT")\n
 st.markdown(f"#### Version: {version}")""", "python")
         
-        st.code("""import botocore\n
-import boto3\n
-from smart_open import smart_open\n
-import streamlit as st\n
-import pandas as pd\n\n
-client = boto3.client('s3')\n\n
-def upload_to_aws(local_file, bucket, s3_file):\n
-    print("###", local_file, bucket, s3_file)\n
-    s3 = boto3.client('s3')\n\n
-    
-    try:\n
-        s3.upload_file(local_file, bucket, s3_file)\n
-        print("Upload Successful")\n
-        return True\n
-    except FileNotFoundError:\n    
-        print("The file was not found")\n
-        return False\n
-    except NoCredentialsError:\n
-        print("Credentials not available")\n
-        return False\n
-    
-def read_file(bucket_name,file_to_be_read):\n
-    with smart_open('s3://' + bucket_name + '/' + file_to_be_read, 'rb') as s3_source:\n
-        s3_source.seek(0)\n
-        message = s3_source.read(1000000)\n
-    return (message.decode('utf8'))\n\n
-    
-st.set_page_config(layout="wide")\n
-st.title("Interact with s3 buckets")\n\n
-st.markdown('Currently only 'france-dsci-app' bucket has Read Write permissions from IZ ')\n
-s3_bucket_env = list(['phmsbi-cpd-analytics-dev','phmsbi-cpd-analytics-prod','france-dsci-app','dsaa-cph-ai-s3-qa','dsaa-cph-ai-s3-dev','dsaa-cph-ai-s3-prod','dsaa-cph-ai-cdp-landing-zone'])\n
-metric_list = list(['read','write a text to a file','copy the file'])\n
-s3_bucket_env = st.selectbox(label = "Choose a bucket", options = s3_bucket_env)\n
-metric = st.selectbox(label = "Choose a metric", options = metric_list)\n
-st.write('You selected:', s3_bucket_env)\n
-st.write('You selected:', metric)\n""", "python")
-
-        st.code("""if metric == 'write a text to a file':\n
-    text_to_put = st.text_input('Enter text : ')\n
-    key_to_write_to = st.text_input('Enter Key to write to : ')\n
-    client.put_object(Bucket= s3_bucket_env,Body= text_to_put,Key= key_to_write_to)\n\n
-elif metric == 'copy the file' :\n
-    uploaded_file = st.file_uploader("Choose a txt/csv file", accept_multiple_files=True)\n
-    key_to_write_to = st.text_input('Enter Key to write to : ')\n
-    dataframe = pd.read_csv(uploaded_file)\n
-    upload_to_aws(uploaded_file, s3_bucket_env, key_to_write_to)\n
-elif metric == 'read':\n
-    file_name = st.text_input('Enter File Name : ')\n
-    file_content = read_file(s3_bucket_env,file_name)\n
-    st.write('The content of the file is ', file_content)""", "python")
+        
         
         client = boto3.client('s3')
         def upload_to_aws(local_file, bucket, s3_file):
