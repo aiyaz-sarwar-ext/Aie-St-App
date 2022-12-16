@@ -13,7 +13,7 @@ setup(
     long_description="maintained by ai enablement team",
     author="AI Enablement",
     author_email="aienablementticket@bayer.com",
-    install_requires=["streamlit", "PyYAML", "pyjwt[crypto]"],
+    install_requires=["streamlit", "PyYAML", "pyjwt[crypto]","pandas","boto3","smart_open"],
     #install_requires=[PyP for PyP in req_txt.split("\n")], # Python Package/Distribution
     #python_requires=">=3.7, <3.8",
     packages=find_packages(),
