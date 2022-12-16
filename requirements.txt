@@ -4,4 +4,4 @@ PyYAML
 pandas
 smart_open
 boto3
-botocore
+
