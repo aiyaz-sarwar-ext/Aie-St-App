@@ -6,7 +6,6 @@ import streamlit as st
 from streamlit.web.server.websocket_headers import _get_websocket_headers
 import sys
 import yaml
-import botocore
 import boto3
 from smart_open import smart_open
 import pandas as pd
