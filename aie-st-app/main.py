@@ -117,8 +117,8 @@ st.markdown(f"#### Version: {version}")""", "python")
                 message = s3_source.read(1000000)
             return (message.decode('utf8'))
 
-        st.set_page_config(layout="wide")
-        st.title("Interact with s3 buckets")
+       
+        st.markdown("## Interact with s3 buckets")
 
         #df = pd.read_csv("Data/gapminder_tidy.csv")
         st.markdown('Currently only france-dsci-app bucket has Read Write permissions from IZ ')
