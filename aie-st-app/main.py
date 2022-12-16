@@ -122,7 +122,7 @@ st.markdown(f"#### Version: {version}")""", "python")
         st.title("Interact with s3 buckets")
 
         #df = pd.read_csv("Data/gapminder_tidy.csv")
-        st.markdown('Currently only 'france-dsci-app' bucket has Read Write permissions from IZ ')
+        st.markdown('Currently only france-dsci-app bucket has Read Write permissions from IZ ')
         s3_bucket_env = list(['phmsbi-cpd-analytics-dev','phmsbi-cpd-analytics-prod','france-dsci-app','dsaa-cph-ai-s3-qa','dsaa-cph-ai-s3-dev','dsaa-cph-ai-s3-prod','dsaa-cph-ai-cdp-landing-zone'])
         metric_list = list(['read','write a text to a file','copy the file'])
 
