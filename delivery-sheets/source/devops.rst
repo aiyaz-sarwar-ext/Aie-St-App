@@ -3,7 +3,7 @@ Notes for DevOps Team
 
 - Name of the application:
 
-- Latest Wheel version:
+- Wheel version for deployment:
 
 - Repository URL:
 
@@ -14,3 +14,9 @@ Notes for DevOps Team
 - Developer Contact Information:
 
 - Notes:
+
+- Requests:
+
+- Optional:
+  - Memory requirements:
+  - CPU cores:

@@ -22,7 +22,7 @@ All files will be generated in the build directory. You can copy the .pdf file t
 
 Deployment Process
 ================
-The AI Enablement team is responsible for the deployment of the streamlit application. After creating a ticket and attaching the delivery sheet, the app will be deployed on IZ QA. After the developer confirmed that the app works as expected, the process will be finished by deploying the app on IZ PROD. This delivery sheet contains all required information and an overview about the state of the application. 
+The AI Enablement team is responsible for the deployment of the streamlit application. The deployment process is started by creating a ticket at AI ENablement, containing only the version of your application to be deployed. After creating a ticket, AI Enablement will check the app repository for the delivery sheet. If the delivery sheet contains the required informatin for deployment, the app will be deployed on IZ QA. After the developer confirmed that the app works as expected, the process will be finished by deploying the app on IZ PROD. This delivery sheet contains all required information and an overview about the state of the application. 
 
 Structure of the Delivery Sheet
 ==========

@@ -50,7 +50,7 @@ wheel:
     - export TWINE_USERNAME=$ARTIFACTORY_USER
     - export TWINE_PASSWORD=$ARTIFACTORY_TOKEN
     - export APP_VERSION=$(cat delivery-sheets/source/VERSION)
-    #- export REQ_TXT=$(cat requirements.txt)
+    - export REQ_TXT=$(cat requirements.txt)
     - bash cicd-helper-scripts/make-wheel.sh
     - bash cicd-helper-scripts/upload-wheel.sh
   <<: *rules_template
